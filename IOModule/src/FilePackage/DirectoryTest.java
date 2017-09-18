@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public final class DirectoryTest {
     //所有满足正则的文件数组
     public static File[] local(File dir, final String regex) {
+        //内部类实现filenameFilter的accept方法
         return dir.listFiles(new FilenameFilter() {
             private Pattern pattern = Pattern.compile(regex);
 
