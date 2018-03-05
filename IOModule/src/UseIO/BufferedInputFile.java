@@ -5,6 +5,7 @@ import java.io.*;
 public class BufferedInputFile {
     //通过reader读取文件
     public static String read(String filename) throws IOException {
+        filename = PathUtil.path + filename;
         //Reading input by lines
         BufferedReader in = new BufferedReader(new FileReader(filename));
         String s;
@@ -24,6 +25,7 @@ public class BufferedInputFile {
 
     //通过inputstream读取文件
     public static String read0(String filename) throws IOException {
+        filename = PathUtil.path + filename;
         BufferedInputStream in = new BufferedInputStream(new FileInputStream(filename));
         int i;
 
@@ -39,8 +41,8 @@ public class BufferedInputFile {
     public static void main(String[] args) throws IOException {
         File file = new File("");
         System.out.println("=============this is reader =-===============");
-        System.out.println(read(PathUtil.path+"BufferedInputFile.java"));
+        System.out.println(read("BufferedInputFile.java"));
         System.out.println("===============this is inputstream=================");
-        System.out.println(read0(PathUtil.path+"BufferedInputFile.java"));
+        System.out.println(read0("BufferedInputFile.java"));
     }
 }

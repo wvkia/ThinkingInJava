@@ -4,6 +4,9 @@ import UseIO.PathUtil;
 
 import java.io.*;
 
+/**
+ * 标准输入、输出、错误 重定向
+ */
 public class Redirecting {
     public static void main(String[] args) throws IOException {
         PrintStream console = System.out;

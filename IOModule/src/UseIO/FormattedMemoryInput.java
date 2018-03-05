@@ -6,7 +6,7 @@ public class FormattedMemoryInput {
     public static void main(String[] args) throws IOException {
         try {
             //ByteArrayInputStream提供字节数组
-            DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(BufferedInputFile.read(PathUtil.path+ "FormattedMemoryInput.java").getBytes()));
+            DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(BufferedInputFile.read("FormattedMemoryInput.java").getBytes()));
             while (true) {
                 System.out.print((char) inputStream.readByte());
             }

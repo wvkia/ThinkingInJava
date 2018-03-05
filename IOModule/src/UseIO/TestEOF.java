@@ -9,7 +9,7 @@ public class TestEOF {
     public static void main(String[] args) throws IOException {
         DataInputStream dataInputStream = new DataInputStream(
                 new ByteArrayInputStream(
-                        BufferedInputFile.read(PathUtil.path+"TestEOF.java")
+                        BufferedInputFile.read("TestEOF.java")
                                 .getBytes()));
         while (dataInputStream.available() != 0){
             System.out.print((char)dataInputStream.readByte());

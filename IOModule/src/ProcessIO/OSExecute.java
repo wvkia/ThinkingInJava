@@ -10,7 +10,8 @@ public class OSExecute {
         boolean err = false;
         try {
             Process process = new ProcessBuilder(command.split(" ")).start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            //配置编码
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(),"gbk"));
             String s;
             while ((s = reader.readLine()) != null) {
                 System.out.println(s);

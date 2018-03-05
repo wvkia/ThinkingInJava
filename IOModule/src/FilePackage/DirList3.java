@@ -9,8 +9,10 @@ public class DirList3 {
     public static void main(String[] args) {
         File path = new File(".");
         String[] lists;
+
+        final String reg = ".*";
         lists = path.list(new FilenameFilter() {
-            private Pattern pattern;
+            private Pattern pattern=Pattern.compile(reg);
             @Override
             public boolean accept(File dir, String name) {
                 return pattern.matcher(name).matches();

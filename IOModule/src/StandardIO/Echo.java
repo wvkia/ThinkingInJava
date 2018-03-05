@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 public class Echo {
     public static void main(String[] args) throws IOException {
+        //System.out和System.err已经被包装成了printStream，但system.in仍是一个inputstream
         BufferedReader stdin  =new BufferedReader(new InputStreamReader(System.in));
         String s;
         while ((s = stdin.readLine()) != null && s.length() != 0) {

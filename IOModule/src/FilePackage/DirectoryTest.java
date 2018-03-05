@@ -87,7 +87,7 @@ public final class DirectoryTest {
         }
         System.out.println("===========================");
         //All java file
-        for (File file : DirectoryTest.walk(".", "D.*\\java")) {
+        for (File file : DirectoryTest.walk(".", "D.*\\.java")) {
             System.out.println(file);
         }
         System.out.println("=============================");
