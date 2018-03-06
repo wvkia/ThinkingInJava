@@ -51,7 +51,7 @@ public class MyWorld {
         System.out.println("List1 =============          " + list1);
         System.out.println("List2 =============          " + list2);
         System.out.println("List3 =============          " + list3);
-        //注意list2和list3采用同一个地址
+        //注意list1和list2采用同一个地址
 
     }
 }

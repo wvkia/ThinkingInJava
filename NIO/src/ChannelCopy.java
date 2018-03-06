@@ -21,6 +21,7 @@ public class ChannelCopy {
         FileChannel in = new FileInputStream(source).getChannel(),
                 out = new FileOutputStream(dest).getChannel();
         ByteBuffer byteBuffer = ByteBuffer.allocate(BSIZE);
+        //通过-1判断是否到底末尾
         while (in.read(byteBuffer) != -1) {
             byteBuffer.flip();  //Prepare for writing
             out.write(byteBuffer);

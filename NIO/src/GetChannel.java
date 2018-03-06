@@ -5,7 +5,9 @@ import java.nio.channels.FileChannel;
 public class GetChannel {
     private static final int BSIZE = 1024;
 
+    //旧的IO 中的 FileInputStream、FileOutputStream、RandomAccessFile被修改，可产生channel对象
     public static void main(String[] args) throws IOException {
+        File file = new File("data.data");
         //Write a file
         FileChannel fileChannel = new FileOutputStream("data.data").getChannel();
         //中文写入文件没有问题，buteBuffer.get()会乱码
@@ -24,5 +26,6 @@ public class GetChannel {
         while (byteBuffer.hasRemaining()) {
             System.out.print((char)byteBuffer.get());
         }
+//        file.delete();
     }
 }
