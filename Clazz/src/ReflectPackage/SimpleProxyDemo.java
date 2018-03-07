@@ -6,6 +6,7 @@ interface Interface{
     void somethingElse(String arg);
 }
 
+//实现类
 class RealObejct implements Interface {
     @Override
     public void doSomething() {
@@ -18,6 +19,7 @@ class RealObejct implements Interface {
     }
 }
 
+//代理类
 class SimpleProxy implements Interface {
     private Interface proxied;
 
