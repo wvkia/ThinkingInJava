@@ -26,6 +26,7 @@ public class FilledList<T> {
         List<T> result = new ArrayList<>();
         try {
             for (int i = 0; i < nElements; i++) {
+                //newInstance只能调用默认构造器
                 result.add(type.newInstance());
             }
         } catch (Exception e) {

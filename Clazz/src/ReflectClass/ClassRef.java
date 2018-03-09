@@ -16,6 +16,15 @@ public class ClassRef {
         //3、getClass（）方法
         clazz = new ClassRef().getClass();
 
+        //通过Class的newInstance创建对象，只能调用默认构造器
+        try {
 
+            Object o = clazz.newInstance();
+            System.out.println(o);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }
