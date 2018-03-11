@@ -1,0 +1,30 @@
+了解Java的访问控制权限，首先需要了解Java如何找到类的class文件的
+Java环境变量解析：
+    JAVA_HOME：仅仅是为了引用方便，设置的一个临时变量
+    PATH：
+        安装完JDK后，安装目录下有两个子目录bin和lib目录，如何需要执行 javac等java命令，就需要这些命令的具体路径，这个时候就可以在PATH中设置对应的路径，这个系统在执行命令时，会
+        到PATH路径下按照顺序获取对应目录下有没有对应的执行文件，通常配置最左边：%JAVA_HOME%/bin/;%JAVA_HOME%/jre/bin
+     CLASS_PATH：是指定Java类所在的目录，path of class，即在执行java类时需要获取类的绝对路径，需要拼凑 这个CLASS_PATH加上类的具体全限定名（包.类名）
+        通常配置：.;%JAVA_HOME%\lib\tools.jar;%JAVA_HOME%\lib\dt.jar，注意最前面有一个点”.“，如果作为路径的话，就是当前路径，如果有一个类名叫做 com.my.Hello.class，拼出来的
+        路径就是 将包名的点替换成文件分隔符”.com/my/Hello.class“即可获取到路径
+        整个配置的CLASS_PATH的意思就是首先从 ”.“代表的当前路径开始拼凑路径，如果找不到在从后续的路径中拼凑
+
+
+
+import和package关键字
+    package是为了将类纳入到包的管理中，如果需要使用这个类，就需要import导入具体的包
+
+
+访问控制权限
+
+default：包访问权限，同一个包下所有的类对这个类都有访问权限，但包外的无法访问
+public :    公开
+protected：继承和包
+private：私有，类内（static可以访问内部的private）
+
+范围      	              private     default	        protected	        public
+同一类             	    √	            √               	    √                       	√
+同一包中的类                          √           	        √               	        √
+不同包中的子类                                              √	                        √
+其他包中的其他类                                                                      √
+
