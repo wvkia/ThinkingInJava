@@ -1,0 +1,33 @@
+内置注解
+    Overried 覆盖父类的方法
+    Deprecated  过时方法
+    Suppress Warnings 关闭编译器警告
+        （ unchecked）未检查的转换，例如没有使用泛型来指定类型
+        （deprecation）过时的方法
+
+创建注解的注解（元注解）
+    @Target（ElementType.Method）注解应用在什么地方
+        参数
+            Type    可以标注到类、接口、enum声明中，注解类型也是接口的一种
+            Field   属性域
+            Method  方法
+            Parameter   参数
+            Constructor 构造函数
+            Local_variable   局部变量
+    @Retention（RetentionPolicy.Runtime） 注解应用在哪一级别 例如 SOURCE源码、CLASS类文件、RUNTIME运行时
+        约束注解的声明周期
+            Source  源码级别，只会保留在源码中，编译成class文件会被丢弃
+            class       Class文件，保留在class文件中，但会被JVM丢弃    （默认）
+            Runtime 运行期JVM中保留，因此可以通过反射获取到
+    @Interface 定义注解类型
+    @Documented 是否将此注解放到javadoc中
+    @Inheried   允许子类继承父类的注解
+
+
+定义注解中可以使用的类型
+    所有基本类型
+    String
+    Class
+    enum
+    Annotation
+    以上类型的数组
