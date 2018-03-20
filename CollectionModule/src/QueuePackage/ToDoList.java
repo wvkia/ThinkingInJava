@@ -2,6 +2,9 @@ package QueuePackage;
 
 import java.util.PriorityQueue;
 
+/**
+ * 优先队列
+ */
 public class ToDoList extends PriorityQueue<ToDoList.ToDoItem> {
     static class ToDoItem implements Comparable<ToDoItem> {
         private char primary;

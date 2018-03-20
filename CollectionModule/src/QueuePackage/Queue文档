@@ -1,0 +1,13 @@
+队列（先进先出）
+常用方法：
+    根据Queue接口定义
+        add(E e)        添加
+        boolean offer(E e)  添加
+            注意二者的区别：add和offer都是添加，但一些队列有限制，比如容量大小，如果超出，add就会抛出IllegalStateException，但offer仅仅是返回false
+                二者都是如果元素为null，抛出nullpointexception
+         E remove();    移除queue的头部
+         E poll()：          移除头部
+            二者区别：如果队列为empty，remove会抛出一个异常NosuchElementException，但poll仅仅返回null
+         E element()：获取头部元素，但不移除
+         E peek()           获取头部元素，但不移除
+            二者区别：如果queue为empty，element会抛出异常，peek返回null

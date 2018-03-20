@@ -1,5 +1,10 @@
 package MapPackage;
 
+/**
+ * map的基本思想就是映射表，也是键值对关联
+ * @param <K>
+ * @param <V>
+ */
 public class AssociativeArray<K, V> {
     private Object[][] pairs;
     private int index;
