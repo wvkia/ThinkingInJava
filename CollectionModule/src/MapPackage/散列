@@ -1,0 +1,69 @@
+散列（hash）算法
+    根据节点的关键码值来确定其存储位置：以关键码K为自变量，通过函数关系计算出函数值，作为节点的存储位置。检索时，同样计算出关键码K计算出地址位置，然后拿到值
+    通过散列方法对节点进行快速检索
+    按散列存储方式构造的存储结构称为散列表，散列表中每一个位置称为“槽slot”，关键点是：由散列函数决定关键码值k与散列地址h(k) 的对应关系，然后通过这种关系进行存储和检索
+
+    一般情况下，散列表的存储空间是一个一维数组A[M]，散列地址就是对应的下标，设计散列算法h：0 <= h(k) <M，通常散列表的空间会大于节点集合数目，虽然浪费一定空间，但会提高检索速度。
+  设置散列表空间M，填入节点数目N，则 N/M 表示散列表的负载因子，又叫做装填因子 load factor，插入时关键码值和散列地址会存在一对一的关系，但不同关键码值可能会存在相同的地址，被称为冲突
+
+  所以：
+    关键在于设计出保证分布均匀的散列函数   和   发生冲突时如何解决
+
+http://www.cnblogs.com/huangfox/archive/2012/07/06/2578898.html
+
+Java集合对散列的使用
+    Java集合通常会使用散列来提高性能，例如Map系列，而如果自定义对象需要作为键值，就需要自定义实现关键值K的方法
+    也就是hashCode方法，但java通常是 在判断键值是否相同时（为了检索或者判断冲突），是利用了equals方法和hashCode两个来判断的，
+    所有equals和hashCode方法都需要进行重写
+
+对于equals和hashcode方法的要求：
+    对于equals方法
+        1、自反性：x.equasl(x)一定true
+        2、对称性：x.equasl(y) ==true 则y.equals(x)必须true
+        3、传递性：x.equals(y) =true,y.equals(z)=true，则x.equals(z)一定true
+        4、一致性：x.equals(y)=true,任何时候都一样
+        5、任何不是null的x，x.equals(null)=false
+     注意：object默认的equals方法是比较地址
+
+     对于hashcode方法
+        同一个对象多次调用hashCode方法应该返回同一个值，所以计算hashcode方法依赖的域必须为不可变量，不能使用可变的
+        equals 为true的对象，hashCode返回值必须一致
+        hashCode方法最好生成分布均匀的散列码
+
+
+
+
+所以我们对于HashMap进行分析，jdk版本 7
+
+作为HashMap的键值通常是必须实现equals和hashCode方法
+hashCode方法是为了根据 域 生成关键码，其实这个已经足够，但hashMap内部代码实现是
+     if (e.hash == hash && ((k = e.key) == key || key.equals(k)))
+  然后就可以看到 不仅是hash值相同， 调用equals也必须相同才满足键值相等的条件
+
+HashMap的hash算法是
+    h.hashCode >>>20 ^ h>>>12......都是进行 位右移 算法
+
+
+解决hash碰撞的方式：通过拉链法，当出现hash碰撞时，用链表的形式进行存储数据
+
+HashMap的几个关键参数
+    1、initialCapacity 容量
+
+    Default_initial_capacity 初始默认容量，源码写着必须是2的次方，默认是16
+        为什么必须是2的次方呢？
+            因为在通过hash算法算出hash值时，会通过一个函数进行包装一下重新计算
+                return h & (length-1);
+             这里的length就是hashMap的容量
+             这里采用的是 & 与 运算，如果length是偶数，也就是2的次方，length-1就是奇数，最低位是1，然后通过hashcode与运算得到的值就是hashcode的最后一位，
+             hashcode这里可能是奇数也可能是偶数，计算出来的地址下标可能奇数可能偶数，保证了分布均匀
+             但如果length设计的不是2的次方，也就是不是奇数，length-1是奇数，最低位为1，那么与运算hashcode得出的一定是偶数
+             这样地址就只会是偶数下标，浪费一半空间
+
+    2、loadFactor 也就是散列表中的装载因子
+        计算方式是 存储的节点数目 / 容量
+        根据这个参数来控制hashMap扩容的 条件，扩容大小直接 *2
+        这个参数值的意义：
+            如果太大，那么存储节点数目很多时才会扩容，导致冲突很多
+            如果太小，会频繁扩容，性能不好
+
+
