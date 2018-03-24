@@ -26,7 +26,7 @@ public class QueueBehavior {
 
     }
 
-    static class Gen implements Generator<String> {
+    static class Gen implements Generator<Object> {
         String[] s="one two three".split(" ");
         int i;
 
@@ -37,9 +37,9 @@ public class QueueBehavior {
     }
 
     public static void main(String[] args) {
-        test(new LinkedList<>(), new Gen());
+        test(new LinkedList<>(),new Gen());
         test(new PriorityQueue<>(), new Gen());
-        test(new ArrayBlockingQueue<String>(count), new Gen());
+        test(new ArrayBlockingQueue<Object>(count), new Gen());
         test(new ConcurrentLinkedQueue<>(), new Gen());
         test(new LinkedBlockingQueue<>(), new Gen());
         test(new PriorityBlockingQueue<>(), new Gen());

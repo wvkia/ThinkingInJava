@@ -1,0 +1,11 @@
+集的概念
+    保存不重复的对象
+
+1、HashSet
+    内部使用Hashmap
+
+2、TreeSet
+    内部使用TreeSet
+
+3、LinkedHashSet
+    内部使用LinkedHashMap

@@ -2,13 +2,20 @@ Map（映射表）
 
 HashMap
 
+
 LinkedHashMap
+    继承了HashMap，在节点的实现中加入了前序和后续指针，所以可以保存值插入的顺序
 
 TreeMap
+    保持值始终有序，TreeMap是现唯一实现可排序的Map，key必须实现Compare接口
+    通过二叉树保持有序
 
 WeakHashMap
+    和HashMap类似，但键值保存的weak引用，弱引用，当除了自身有对key的引用外，此key没有其他引用那么此map会自动丢弃此值
 
 ConcurrentHashMap
+    线程安全的HashMap
 
 IdentityHashMap
+    使用 == 而不是equals来判断键值是否相等
 
