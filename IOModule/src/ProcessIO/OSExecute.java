@@ -14,11 +14,11 @@ public class OSExecute {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(),"gbk"));
             String s;
             while ((s = reader.readLine()) != null) {
-                System.out.println(s);
+                System.out.println("执行输出："+s);
             }
             BufferedReader erros = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             while ((s = erros.readLine()) != null) {
-                System.err.println(s);
+                System.err.println("错误信息:"+s);
                 err = true;
             }
 
@@ -28,6 +28,6 @@ public class OSExecute {
     }
 
     public static void main(String[] args) {
-        OSExecute.command("ipconfig");
+        OSExecute.command("ifconfig");
     }
 }

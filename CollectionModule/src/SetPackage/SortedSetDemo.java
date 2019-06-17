@@ -1,9 +1,6 @@
 package SetPackage;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class SortedSetDemo {
     public static void main(String[] args) {
@@ -21,5 +18,7 @@ public class SortedSetDemo {
         System.out.println(stringSortedSet.subSet(low, high));
         System.out.println(stringSortedSet.headSet(high));
         System.out.println(stringSortedSet.tailSet(low));
+
+        EnumSet<Thread.State> set =HashMap
     }
 }

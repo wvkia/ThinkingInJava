@@ -1,6 +1,7 @@
 package UseIO;
 
 import java.io.*;
+import java.util.HashMap;
 
 public class BufferedInputFile {
     //通过reader读取文件
@@ -28,7 +29,6 @@ public class BufferedInputFile {
         filename = PathUtil.path + filename;
         BufferedInputStream in = new BufferedInputStream(new FileInputStream(filename));
         int i;
-
         StringBuilder stringBuilder = new StringBuilder();
         //每次读取一个字节
         while ((i = in.read()) != -1) {
